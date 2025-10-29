@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MUMEEN — Professional Music Promoter</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0b0b0d;
+      --card:#0f1113;
+      --muted:#bdbdbd;
+      --accent1:#ff4b7a;    /* pink */
+      --accent2:#f5c04a;    /* gold */
+      --glass: rgba(255,255,255,0.03);
+    }
+
+    *{box-sizing:border-box}
+    html,body{:120%}
+    body{
+      margin:0;
+      background: linear-gradient(180deg,#070708 0%, #0b0b0d 35%, #111214 100%);
+      color:#e9e9ea;
+      font-family: 'Montserrat', sans-serif;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+    }
+
+    /* Page container */
+    .wrap{
+      max-width:1200px;
+      margin:32px auto;
+      padding:28px;
+    }
+
+    /* Header / nav */
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      margin-bottom:28px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+    .logo {
+      width:56px;
+      height:56px;
+      border-radius:12px;
+      background: linear-gradient(135deg,var(--accent1),var(--accent2));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:800;
+      color:#0b0b0d;
+      box-shadow: 0 6px 20px rgba(245,192,74,0.08);
+      font-size:20px;
+    }
+    .brand h1{
+      font-size:18px;
+      margin:0;
+      letter-spacing:1px;
+    }
+    .brand p{margin:0;font-size:12px;color:var(--muted)}
+
+    nav{
+      display:flex;
+      gap:18px;
+      align-items:center;
+    }
+    nav a{
+      color:var(--muted);
+      text-decoration:none;
+      font-weight:600;
+      padding:8px 12px;
+      border-radius:8px;
+      transition: all .22s ease;
+      font-size:14px;
+    }
+    nav a:hover{ color:white; transform:translateY(-3px)}
+    .btn-contact{
+      background: linear-gradient(90deg,var(--accent1),var(--accent2));
+      color:#0b0b0d;
+      padding:10px 14px;
+      border-radius:10px;
+      font-weight:700;
+      text-decoration:none;
+      box-shadow: 0 8px 30px rgba(255,75,122,0.08);
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    /* Hero */
+    .hero{
+      display:grid;
+      grid-template-columns: 1fr 420px;
+      gap:28px;
+      align-items:center;
+      margin-bottom:40px;
+      background: linear-gradient(180deg, rgba(255,75,122,0.03), transparent 40%);
+      padding:28px;
+      border-radius:14px;
+      box-shadow: 0 10px 40px rgba(2,2,2,0.5);
+      overflow:hidden;
+    }
+
+    .hero-left{
+      padding-right:10px;
+    }
+    .eyebrow{
+      display:inline-block;
+      background:linear-gradient(90deg,var(--accent1),var(--accent2));
+      color:#0b0b0d;
+      padding:6px 10px;
+      border-radius:999px;
+      font-weight:700;
+      font-size:12px;
+      margin-bottom:16px;
+    }
+    .hero h2{
+      font-size:36px;
+      margin:0 0 12px 0;
+      line-height:1.05;
+    }
+    .hero p.lead{
+      color:var(--muted);
+      margin:0 0 20px 0;
+      max-width:640px;
+    }
+    .cta-group{ display:flex; gap:12px; align-items:center }
+    .primary-cta{
+      background: linear-gradient(90deg,var(--accent1),var(--accent2));
+      color:#0b0b0d;
+      padding:12px 18px;
+      border-radius:10px;
+      font-weight:700;
+      text-decoration:none;
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      box-shadow: 0 10px 30px rgba(245,192,74,0.06);
+    }
+    .ghost-cta{
+      color:var(--muted);
+      padding:10px 14px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,0.04);
+      text-decoration:none;
+      font-weight:600;
+    }
+
+    /* Hero image card */
+    .hero-right{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+    .portrait-card{
+      width:360px;
+      height:360px;
+      border-radius:18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      box-shadow: 0 20px 50px rgba(2,2,2,0.6);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+      overflow:hidden;
+      transform-origin:center;
+    }
+    .portrait {
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      border-radius:18px;
+      transition: transform .8s cubic-bezier(.2,.9,.3,1);
+      filter: saturate(1.02);
+    }
+    .portrait-card:hover .portrait{ transform: scale(1.03) rotate(-1deg) }
+
+    /* Services */
+    .section{
+      margin-top:34px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+      padding:24px;
+      border-radius:12px;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3,1fr);
+      gap:18px;
+    }
+    .card{
+      background:var(--card);
+      padding:18px;
+      border-radius:12px;
+      box-shadow: 0 8px 30px rgba(2,2,2,0.5);
+      transition: transform .25s ease, box-shadow .25s ease;
+      border:1px solid rgba(255,255,255,0.02);
+    }
+    .card:hover{ transform: translateY(-8px); box-shadow: 0 22px 50px rgba(2,2,2,0.7) }
+
+    .card h3{ margin:8px 0 6px 0; }
+    .card p{ color:var(--muted); font-size:14px; margin:0 }
+
+    /* Portfolio */
+    .portfolio-grid{
+      display:grid;
+      grid-template-columns: repeat(3,1fr);
+      gap:14px;
+      margin-top:12px;
+    }
+    .portfolio-item{
+      height:170px;
+      border-radius:10px;
+      overflow:hidden;
+      position:relative;
+      cursor:pointer;
+    }
+    .portfolio-item img{
+      width:100%;
+      height:200%;
+      object-fit:cover;
+      display:block;
+      transition: transform .100s ease;
+    }
+    .portfolio-item:hover img{ transform: scale(3.06) }
+
+    .portfolio-overlay{
+      position:absolute;
+      inset:0;
+      display:flex;
+      align-items:flex-end;
+      padding:12px;
+      background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.5));
+      color:white;
+      font-weight:700;
+      font-size:14px;
+    }
+
+    /* Contact / Footer */
+    .contact-row{
+      display:flex;
+      gap:20px;
+      align-items:flex-start;
+      margin-top:18px;
+      flex-wrap:wrap;
+    }
+    .contact-info{
+      flex:1;
+      min-width:260px;
+    }
+    form.contact-form{
+      width:420px;
+      max-width:100%;
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+      padding:16px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,0.02);
+    }
+    .field{ margin-bottom:12px }
+    .field label{ display:block; font-size:12px; color:var(--muted); margin-bottom:6px }
+    .field input, .field textarea{
+      width:100%;
+      padding:10px 12px;
+      border-radius:8px;
+      border:1px solid rgba(255,255,255,0.04);
+      background:transparent;
+      color:inherit;
+      font-size:14px;
+      outline:none;
+    }
+    .field textarea{ min-height:110px; resize:vertical }
+    .form-row{ display:flex; gap:10px }
+    .form-row .field{ flex:1 }
+
+    .small{ font-size:13px; color:var(--muted) }
+    footer{
+      margin-top:28px;
+      border-top:1px solid rgba(255,255,255,0.02);
+      padding-top:20px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:15px;
+      flex-wrap:wrap;
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero{ grid-template-columns: 1fr 320px }
+      .grid{ grid-template-columns: repeat(2,1fr) }
+      .portfolio-grid{ grid-template-columns: repeat(2,1fr) }
+    }
+    @media (max-width: 720px){
+      .hero{ grid-template-columns:1fr; padding:18px; }
+      .portrait-card{ width:320px; height:320px; margin:auto }
+      nav{ display:none }
+      .grid{ grid-template-columns:1fr }
+      .portfolio-grid{ grid-template-columns:1fr }
+      header{flex-direction:column; align-items:flex-start; gap:14px}
+    }
+
+    /* subtle entrance animations */
+    .fade-in { opacity:0; transform: translateY(8px); animation: fadeInUp .7s ease forwards}
+    @keyframes fadeInUp { to { opacity:1; transform: translateY(0) } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="fade-in" style="animation-delay:.05s">
+      <div class="brand">
+        <div class="logo">M</div>
+        <div>
+          <h1>MUMEEN</h1>
+          <p>Professional Music Promoter</p>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact</a>
+        <a class="btn-contact" href="mailto:mumeenpromoter@gmail.com">Contact</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <main id="home" class="hero fade-in" style="animation-delay:.12s">
+      <div class="hero-left">
+        <span class="eyebrow">Music Promotion • Artist Growth</span>
+        <h2>Take your music to the next level.<br><span style="color:var(--accent1)">Global reach</span>, authentic growth, and industry connections.</h2>
+        <p class="lead">
+          I'm Mumeen — a results-driven music promoter focusing on organic growth, playlist pitching, artist branding, and digital campaigns that get real listens and long-term fans.
+          I work with independent artists, labels, and event promoters to create campaigns that convert.
+        </p>
+
+        <div class="cta-group">
+          <a class="primary-cta" href="mailto:mumeenpromoter@gmail.com">Work with Mumeen</a>
+          <a class="ghost-cta" href="#portfolio">See Portfolio</a>
+        </div>
+
+        <!-- quick stats -->
+        <div style="display:flex; gap:16px; margin-top:20px; align-items:center; flex-wrap:wrap">
+          <div style="background:var(--glass); padding:10px 14px; border-radius:10px; border:1px solid rgba(255,255,255,0.02)">
+            <div style="font-weight:800; font-size:18px">120+</div>
+            <div class="small">Campaigns run</div>
+          </div>
+          <div style="background:var(--glass); padding:10px 14px; border-radius:10px; border:1px solid rgba(255,255,255,0.02)">
+            <div style="font-weight:800; font-size:18px">35k+</div>
+            <div class="small">Monthly listeners impacted</div>
+          </div>
+          <div style="background:var(--glass); padding:10px 14px; border-radius:10px; border:1px solid rgba(255,255,255,0.02)">
+            <div style="font-weight:800; font-size:18px">50+</div>
+            <div class="small">Playlists placed</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="portrait-card fade-in" style="animation-delay:.20s">
+          <!-- Replace the src below with your uploaded image filename or a hosted url -->
+          </div>
+          <img class="portrait" src="mum.jpg" alt="Mumeen portrait">
+        </div> 
+        </div>
+      </div>
+    </main>
+
+    <!-- ABOUT / SERVICES -->
+    <section id="about" class="section fade-in" style="animation-delay:.22s">
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap">
+        <div style="flex:1; min-width:260px; padding-right:10px">
+          <h2 style="margin:0 0 8px 0; color:var(--accent1)">About Mumeen</h2>
+          <p style="color:var(--muted); margin-bottom:12px;">
+            I combine data-driven promotion and creative storytelling to grow artists' audiences. From targeted playlist pitching to social strategy and cross-platform ad campaigns, I craft tailored plans that get music heard and remembered.
+          </p>
+          <ul style="color:var(--muted); margin-top:8px; padding-left:18px">
+            <li>Digital & playlist promotion</li>
+            <li>Artist image & branding</li>
+            <li>Press outreach & placements</li>
+            <li>Event and radio promotion</li>
+          </ul>
+        </div>
+
+        <div style="width:420px; min-width:260px">
+          <div class="card" style="display:flex; gap:14px; align-items:center">
+            <div style="width:64px; height:64px; border-radius:10px; background:linear-gradient(90deg,var(--accent1),var(--accent2)); display:flex; align-items:center; justify-content:center; font-weight:800; color:#0b0b0d">PR</div>
+            <div>
+              <div style="font-weight:700">Featured Campaign: Rising Star EP</div>
+              <div style="color:var(--muted); font-size:13px">Reached 200k+ streams in 4 weeks with playlist placement and influencer buzz.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="section fade-in" style="animation-delay:.28s; margin-top:18px">
+      <h3 style="color:var(--accent1)">Services</h3>
+      <div class="grid" style="margin-top:12px">
+        <div class="card">
+          <h3>Playlist Pitching</h3>
+          <p>Targeted pitching to independent & editorial playlists with campaign reporting and analytics.</p>
+        </div>
+        <div class="card">
+          <h3>Social Growth</h3>
+          <p>Content strategy, short-form viral hooks, and paid/organic growth across platforms.</p>
+        </div>
+        <div class="card">
+          <h3>Artist Branding</h3>
+          <p>Visual identity, EPK creation, and cohesive branding packages for press and press kits.</p>
+        </div>
+        <div class="card">
+          <h3>PR & Press</h3>
+          <p>Press outreach to blogs, curators, and niche publications to build credibility.</p>
+        </div>
+        <div class="card">
+          <h3>Event Promotion</h3>
+          <p>Local & virtual event promotion including ticketing partnerships and radio spots.</p>
+        </div>
+        <div class="card">
+          <h3>Consulting</h3>
+          <p>One-on-one strategy sessions to build long-term, sustainable artist growth plans.</p>
+        </div>
+      </div>
+    </section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio" class="section fade-in" style="animation-delay:.34s; font-family:'Poppins', sans-serif; padding:60px 0; background-color:#0b0b0b; color:#fff;">
+  <div style="text-align:center; margin-bottom:40px;">
+    <h3 style="color:var(--accent1)"></hfont-size:2rem; margin-bottom:8px;">Portfolio & Case Studies</h3>
+    <p style="font-size:15px; color:#ccc;">Some of my top music promotion campaigns & success stories</p>
+  </div>
+
+  <div class="portfolio-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:25px; padding:0 40px;">
+    
+    <div class="portfolio-item" 
+      onclick="window.open('https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f','_blank')" 
+      style="position:relative; overflow:hidden; border-radius:12px; cursor:pointer; box-shadow:0 4px 14px rgba(0,0,0,.4);">
+      <img src="https://images.unsplash.com/photo-1485579149621-3123dd979885?auto=format&fit=crop&w=800&q=60" alt="EP Launch" 
+        style="width:100%; height:100%; object-fit:cover; transition:transform .4s ease;">
+      <div class="portfolio-overlay" 
+        style="position:absolute; bottom:0; left:0; right:0; padding:18px; background:linear-gradient(to top,rgba(0,0,0,0.8),rgba(0,0,0,0)); font-size:16px; font-weight:600; color:#ffffff;">
+        🔥 EP Launch: Viral Growth
+      </div>
+    </div>
+
+    <div class="portfolio-item" 
+      onclick="window.open('https://images.unsplash.com/photo-1487180144351-b8472da7d491','_blank')" 
+      style="position:relative; overflow:hidden; border-radius:12px; cursor:pointer; box-shadow:0 4px 14px rgba(0,0,0,.4);">
+      <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=800&q=60" alt="Playlist Placements" 
+        style="width:100%; height:100%; object-fit:cover; transition:transform .4s ease;">
+      <div class="portfolio-overlay" 
+        style="position:absolute; bottom:0; left:0; right:0; padding:18px; background:linear-gradient(to top,rgba(0,0,0,0.8),rgba(0,0,0,0)); font-size:16px; font-weight:600; color:#ffffff;">
+        🎧 Playlist Placements — 50+ Curators
+      </div>
+    </div>
+
+    <div class="portfolio-item" 
+      onclick="window.open('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4','_blank')" 
+      style="position:relative; overflow:hidden; border-radius:12px; cursor:pointer; box-shadow:0 4px 14px rgba(0,0,0,.4);">
+      <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=800&q=60" alt="Social Campaign" 
+        style="width:100%; height:100%; object-fit:cover; transition:transform .4s ease;">
+      <div class="portfolio-overlay" 
+        style="position:absolute; bottom:0; left:0; right:0; padding:18px; background:linear-gradient(to top,rgba(0,0,0,0.8),rgba(0,0,0,0)); font-size:16px; font-weight:600; color:#ffffff;">
+        📱 Social-First Music Campaign
+      </div>
+    </div>
+
+    <div class="portfolio-item" 
+      onclick="window.open('https://images.unsplash.com/photo-1518972559570-0b4a0a9b1a2b','_blank')" 
+      style="position:relative; overflow:hidden; border-radius:12px; cursor:pointer; box-shadow:0 4px 14px rgba(0,0,0,.4);">
+     
+   <div class="portfolio-item">
+  <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=600&q=80" 
+       alt="Radio & Event Push" 
+       style="width:100%; height:auto; display:block; border-radius:8px;">
+  <div class="portfolio-overlay">Radio & Event Push</div>
+</div>
+</section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section fade-in" style="animation-delay:.40s">
+      <h3 style="color:var(--accent1)">Contact</h3>
+      <div class="contact-row" style="margin-top:12px">
+        <div class="contact-info">
+          <p style="margin:0 0 8px 0">Interested in promotion, campaign pricing, or consultations? Reach me directly:</p>
+          <p style="font-weight:700; margin:0 0 6px 0">Email: <a href="mailto:mumeenpromoter@gmail.com" style="color:var(--accent1); text-decoration:none">mumeenpromoter@gmail.com</a></p>
+          
+
+       </div>
+          </div>
+        </div>
+
+        <form class="contact-form" id="contactForm" onsubmit="submitForm(event)">
+          <div class="field">
+            <label for="name">Full name</label>
+            <input id="name" name="name" type="text" placeholder="Your name" required>
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="you@example.com" required>
+            </div>
+            <div class="field">
+              <label for="phone">Phone (optional)</label>
+              <input id="phone" name="phone" type="text" placeholder="+234 000 0000">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="message">Message / Brief</label>
+            <textarea id="message" name="message" placeholder="Tell me about your release, goals, and timelines..." required></textarea>
+          </div>
+
+          <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; margin-top:6px">
+            <div class="small">Or email directly: <a href="mailto:mumeenpromoter@gmail.com" style="color:var(--accent1)">mumeenpromoter@gmail.com</a></div>
+            <button type="submit" style="background:linear-gradient(90deg,var(--accent1),var(--accent2)); border:0; padding:10px 14px; border-radius:10px; font-weight:700; color:#0b0b0d; cursor:pointer">Send message</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <div class="small">© <strong>MUMEEN</strong> — Professional Music Promoter. Built for independent artists & labels.</div>
+      <div class="small">
+      
+    </footer>
+  </div>
+
+  <!-- Lightbox modal -->
+  <div id="lightbox" style="position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:rgba(0,0,0,0.8); z-index:10000;">
+    <div style="max-width:1000px; width:100%; padding:20px; display:flex; justify-content:center;">
+      <img id="lbimg" src="" style="max-width:100%; border-radius:10px; box-shadow:0 20px 60px rgba(0,0,0,0.8)">
+    </div>
+  </div>
+
+  <script>
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', function(e){
+        const trg = document.querySelector(this.getAttribute('href'));
+        if(trg){ e.preventDefault(); trg.scrollIntoView({behavior:'smooth', block:'start'}); }
+      });
+    });
+
+    // Lightbox open/close
+    function openLightbox(url){
+      const lb = document.getElementById('lightbox');
+      const img = document.getElementById('lbimg');
+      img.src = url;
+      lb.style.display = 'flex';
+      lb.onclick = ()=>{ lb.style.display='none'; img.src=''; }
+    }
+
+    // Simple form handler (uses mailto fallback)
+    function submitForm(e){
+      e.preventDefault();
+      const name = encodeURIComponent(document.getElementById('name').value.trim());
+      const email = encodeURIComponent(document.getElementById('email').value.trim());
+      const phone = encodeURIComponent(document.getElementById('phone').value.trim());
+      const message = encodeURIComponent(document.getElementById('message').value.trim());
+
+      // Create subject & body for mailto
+      const subject = encodeURIComponent('Website contact from ' + (name || email));
+      const body = encodeURIComponent(
+        'Name: ' + name + '\\nEmail: ' + email + '\\nPhone: ' + phone + '\\n\\nMessage:\\n' + message
+      );
+
+      // open mail client
+      window.location.href = 'mailto:mumeenpromoter@gmail.com?subject=' + subject + '&body=' + body;
+
+      // Optionally show a quick UI feedback
+      const submitBtn = e.target.querySelector('button[type="submit"]');
+      const originalText = submitBtn.innerText;
+      submitBtn.innerText = 'Opening mail…';
+      setTimeout(()=> submitBtn.innerText = originalText, 3000);
+    }
+
+    // Reveal animations on load
+    window.addEventListener('load', ()=> {
+      document.querySelectorAll('.fade-in').forEach((el,i)=>{
+        el.style.animationDelay = (0.06 * i) + 's';
+      });
+    });
+  </script>
+</body>
+</html
